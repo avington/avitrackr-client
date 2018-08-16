@@ -1,0 +1,50 @@
+@import '../../../../styles/helpers/colors';
+
+header {
+  height: 55px;
+  background-color: $blue;
+
+}
+
+.logo-row {
+  width: 1028px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+}
+
+.logo {
+  width: 15.0rem;
+  a {
+    color: $yellow;
+    font-size: 2.0rem;
+    font-weight: 700;
+    display: block;
+    padding: 0.5rem 1.00rem 0 1.00rem;
+    font-family: 'Kosugi Maru', sans-serif;
+  }
+}
+
+.login-button {
+  display: grid;
+  justify-content: end;
+
+  a {
+    padding-top: 12px;
+    height: 38px;
+    color: $white;
+    display: block;
+    width: 7.00rem;
+    text-align: center;
+    border-bottom: 5px solid $blue;
+    font-size: 1.3rem;
+    transition: 300ms ease;
+  }
+
+  a:hover {
+    border-bottom: 5px solid $white;
+    cursor: pointer;
+  }
+}
+

@@ -1,0 +1,12 @@
+<header>
+  <div class="logo-row">
+    <div class="logo">
+      <a routerLink="/">AviTrackr</a>
+    </div>
+    <nav class="profile">
+      <div class="login-button" *ngIf="!(isLoggedIn$ | async)">
+        <a (click)="login()" href="javascript:void(0)">Login</a>
+      </div>
+    </nav>
+  </div>
+</header>

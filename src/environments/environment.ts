@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   clientRoot: 'http://localhost:4200/',
-  apiRoot: 'http://localhost:5001',
+  apiRoot: 'http://localhost:4095/api/',
   auth: {
     stsAuthority: 'http://localhost:4242/',
     clientId: 'spa-client'
