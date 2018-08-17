@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import * as fromCoreStore from '../../../core/store';
 import { getIsLoggedInFromState } from '../../../core/store/selectors/auth-selectors';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'avi-default-header',
@@ -11,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class DefaultHeaderComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  constructor(private rootStore: Store<fromCoreStore.CoreState>) {}
+  constructor(private rootStore: Store<fromCoreStore.CoreState>, private auth: AuthService) {}
 
   ngOnInit() {
     this.isLoggedIn$ = this.rootStore.select(getIsLoggedInFromState);
@@ -19,5 +20,11 @@ export class DefaultHeaderComponent implements OnInit {
 
   login() {
     console.log('login');
+    this.auth.login();
+  }
+
+  logout() {
+    console.log('logout');
+    this.auth.logout();
   }
 }

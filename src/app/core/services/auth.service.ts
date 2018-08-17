@@ -1,6 +1,9 @@
-import {Injectable} from '@angular/core';
-import {UserManager, User, WebStorageStateStore, Log} from 'oidc-client';
-import {environment} from '../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { UserManager, User, WebStorageStateStore, Log } from 'oidc-client';
+import { environment } from '../../../environments/environment';
+
+import * as fromCoreStore from '../store';
+import { Store } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ export class AuthService {
   private _userManager: UserManager;
   private _user: User;
 
-  constructor() {
+  constructor(private store: Store<fromCoreStore.CoreState>) {
     const config = {
       authority: environment.auth.stsAuthority,
       client_id: environment.auth.clientId,
@@ -17,7 +20,7 @@ export class AuthService {
       scope: 'openid projects-api profile',
       response_type: 'id_token token',
       post_logout_redirect_uri: `${environment.clientRoot}?postLogout=true`,
-      userStore: new WebStorageStateStore({store: window.localStorage}),
+      userStore: new WebStorageStateStore({ store: window.localStorage }),
       automaticSilentRenew: true,
       silent_redirect_uri: `${environment.clientRoot}assets/silent-redirect.html`
     };
@@ -25,6 +28,12 @@ export class AuthService {
     this._userManager.getUser().then(user => {
       if (user && !user.expired) {
         this._user = user;
+      }
+      const isLoggedIn = user && user.access_token && !user.expired;
+      if (isLoggedIn) {
+        this.store.dispatch(new fromCoreStore.Login());
+      } else {
+        this.store.dispatch(new fromCoreStore.Logout());
       }
     });
   }
@@ -48,5 +57,4 @@ export class AuthService {
   signoutRedirectCallback(): Promise<any> {
     return this._userManager.signoutRedirectCallback();
   }
-
 }
