@@ -1,7 +1,10 @@
 <avi-default-layout>
-  <p>
-    home-page works!
-  </p>
+  <section class="home">
+    <div *ngIf="(isLoggedIn$ | async)">
+      <avi-summary-task-list-container></avi-summary-task-list-container>
+    </div>
+    <div *ngIf="!(isLoggedIn$ | async)">
+      is not logged in
+    </div>
+  </section>
 </avi-default-layout>
-
-

@@ -30,12 +30,13 @@ header {
   a {
     padding-top: 12px;
     height: 38px;
-    color: $light-blue-50;
+    color: #ffffff;
     display: block;
     width: 7.00rem;
     text-align: center;
     border-bottom: 5px solid $blue;
     font-size: 1.3rem;
+    font-weight: 600;
     transition: 300ms ease;
   }
   a:hover {
