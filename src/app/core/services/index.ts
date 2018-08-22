@@ -1,5 +1,8 @@
-import {AuthService} from './auth.service';
+import { AuthService } from './auth.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpAuthInterceptorService } from './http-auth-intercetor.service';
 
 export const CORE_PROVIDERS: any[] = [
-  AuthService
+  AuthService,
+  { provide: HTTP_INTERCEPTORS, useClass: HttpAuthInterceptorService, multi: true }
 ];

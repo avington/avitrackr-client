@@ -18,7 +18,7 @@ export enum TaskSummaryActionTypes {
 export class Load implements Action {
   readonly type = TaskSummaryActionTypes.Load;
 
-  constructor(public payload: any) {}
+  constructor(public payload?: any) {}
 }
 
 export class LoadSuccess implements Action {

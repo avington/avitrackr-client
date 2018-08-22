@@ -2,6 +2,7 @@ import * as fromAction from '../actions/auth-actions';
 
 export interface AuthState {
   isLoggedIn: boolean;
+  profileEmail?: string;
 }
 
 const initialState: AuthState = {
@@ -20,7 +21,15 @@ export function reducer(state = initialState, action: fromAction.AuthActions): A
     case fromAction.AuthActionTypes.Logout: {
       return {
         ...state,
-        isLoggedIn: false
+        isLoggedIn: false,
+        profileEmail: null
+      };
+    }
+
+    case fromAction.AuthActionTypes.SetProfile: {
+      return {
+        ...state,
+        profileEmail: action.payload
       };
     }
 

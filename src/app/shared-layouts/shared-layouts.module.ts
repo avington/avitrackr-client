@@ -4,6 +4,7 @@ import { DefaultLayoutComponent } from './containers/default-layout/default-layo
 import { DefaultHeaderComponent } from './containers/default-header/default-header.component';
 import { DefaultFooterComponent } from './containers/default-footer/default-footer.component';
 import {RouterModule} from '@angular/router';
+import { ProfileDropdownComponent } from './components/profile-dropdown/profile-dropdown.component';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import {RouterModule} from '@angular/router';
     RouterModule
   ],
   exports: [DefaultLayoutComponent],
-  declarations: [DefaultLayoutComponent, DefaultHeaderComponent, DefaultFooterComponent]
+  declarations: [DefaultLayoutComponent, DefaultHeaderComponent, DefaultFooterComponent, ProfileDropdownComponent]
 })
 export class SharedLayoutsModule { }

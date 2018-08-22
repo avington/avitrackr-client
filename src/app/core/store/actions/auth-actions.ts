@@ -6,7 +6,8 @@ import { Action } from '@ngrx/store';
  */
 export enum AuthActionTypes {
   Login = '[Auth] Login',
-  Logout = '[Auth] Logout'
+  Logout = '[Auth] Logout',
+  SetProfile = '[Auth] SetProfile'
 }
 
 /**
@@ -26,8 +27,14 @@ export class Logout implements Action {
   constructor(public payload?: any) {}
 }
 
+export class SetProfile implements Action {
+  readonly type = AuthActionTypes.SetProfile;
+
+  constructor(public payload: string) {}
+}
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type AuthActions = Login | Logout;
+export type AuthActions = Login | Logout | SetProfile;

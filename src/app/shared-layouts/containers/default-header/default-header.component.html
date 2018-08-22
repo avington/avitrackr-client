@@ -8,7 +8,7 @@
         <a (click)="login()" href="javascript:void(0)">Login</a>
       </div>
       <div class="auth-button" *ngIf="(isLoggedIn$ | async)">
-        <a (click)="logout()" href="javascript:void(0)">Logout</a>
+        <avi-profile-dropdown [profileName]="profileName$ | async"></avi-profile-dropdown>
       </div>
     </nav>
   </div>

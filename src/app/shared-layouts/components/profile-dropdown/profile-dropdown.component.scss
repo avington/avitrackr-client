@@ -1,0 +1,29 @@
+@import "../../../../styles/helpers/colors";
+.section-dropdown {
+  position: relative;
+  padding-top: 20px;
+
+  a {
+    color: #ffffff;
+  }
+}
+
+.menu-dropdown {
+  position: absolute;
+  background-color: $blue;
+  top: 55px;
+
+  ul {
+    margin: 0 0 0 0;
+    padding: 0 1rem 0 1rem;
+
+    li {
+      padding: 1rem 1rem 1rem 1rem;
+      border-bottom: 1px solid $light-blue-50;
+    }
+
+    li:last-child {
+      border-bottom: 0;
+    }
+  }
+}

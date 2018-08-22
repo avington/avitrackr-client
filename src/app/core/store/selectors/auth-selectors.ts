@@ -5,6 +5,10 @@ import { createSelector } from '@ngrx/store';
 export const getAuthState = createSelector(fromReducers.getCoreState, (state: fromReducers.CoreState) => state.auth);
 
 export const getIsLoggedInFromState = createSelector(getAuthState, (state: fromAuthReducer.AuthState) => {
-  console.log(state);
   return state.isLoggedIn;
 });
+
+export const getProfileNameFromState = createSelector(
+  getAuthState,
+  (state: fromAuthReducer.AuthState) => state.profileEmail
+);

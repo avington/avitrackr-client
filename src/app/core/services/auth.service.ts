@@ -32,9 +32,21 @@ export class AuthService {
       const isLoggedIn = user && user.access_token && !user.expired;
       if (isLoggedIn) {
         this.store.dispatch(new fromCoreStore.Login());
+        this.store.dispatch(new fromCoreStore.SetProfile(user.profile.name));
       } else {
         this.store.dispatch(new fromCoreStore.Logout());
       }
+    });
+    this._userManager.events.addUserLoaded(() => {
+      this._userManager.getUser().then(user => {
+        this._user = user;
+        if (this._user && this._user.access_token && !this._user.expired) {
+          this.store.dispatch(new fromCoreStore.Login());
+          this.store.dispatch(new fromCoreStore.SetProfile(user.profile.name));
+        } else {
+          this.store.dispatch(new fromCoreStore.Logout());
+        }
+      });
     });
   }
 

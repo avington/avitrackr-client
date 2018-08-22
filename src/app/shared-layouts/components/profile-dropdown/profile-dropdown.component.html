@@ -1,0 +1,16 @@
+<div class="section-dropdown header-item">
+  <a href="#" (click)="toggleDropdownMenu()" class="header-link">
+    {{profileName}}
+    <i class="fas fa-angle-down margin-left-5"></i>
+  </a>
+  <div class="menu-dropdown" [@onEnter]="buttonState">
+    <ul>
+      <li>
+        <a [routerLink]="['/profile']" routerLinkActive="router-link-active" >Profile</a>
+      </li>
+      <li>
+        <a (click)="logout()" href="javascript:void(0)">Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>
