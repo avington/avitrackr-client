@@ -1,0 +1,14 @@
+@import '../../../../styles/helpers/colors';
+
+.profile-page-container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-column-gap: 2rem;
+  max-width: 1028px;
+  margin: 1rem auto;
+}
+
+.side-nav {
+  background-color: $green-400;
+  min-height: 10rem;
+}
