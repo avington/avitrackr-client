@@ -5,7 +5,7 @@
       <avi-profile-side-nav [url]="url"></avi-profile-side-nav>
     </div>
     <div class="profile-content">
-      <avi-profile-summary [profile]="profile$ | async"></avi-profile-summary>
+      <avi-profile-edit [profile]="profile$ | async" (updateProfile)="onUpdateProfile($event)"></avi-profile-edit>
     </div>
   </div>
 

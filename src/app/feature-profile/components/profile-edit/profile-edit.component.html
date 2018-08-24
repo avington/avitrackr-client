@@ -1,0 +1,19 @@
+<div class="form-default width-button-row">
+  <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+    <div class="section">First Name &amp; Address</div>
+    <div class="inner-wrap">
+      <label for="firstName">First Name
+        <input id="firstName" type="text" name="firstName" formControlName="firstName" />
+      </label>
+      <label for="lastName">Last Name
+        <input id="lastName" type="text" name="lastName" formControlName="lastName" />
+      </label>
+    </div>
+
+    <div class="button-row">
+      <button class="btn arrow fas fa-arrow-right" type="submit">
+        <span>Save</span>
+      </button>
+    </div>
+  </form>
+</div>

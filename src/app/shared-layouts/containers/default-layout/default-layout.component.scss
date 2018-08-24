@@ -1,0 +1,22 @@
+@import '../../../../styles/helpers/colors';
+.spinner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $green-50;
+  opacity: .5;
+  z-index: 100;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px; // grid-auto-rows: 200px;
+  grid-template-areas: ". a a ." ". a a .";
+}
+
+.item1 {
+  grid-area: a;
+  align-self: center;
+  justify-self: center;
+  margin-top: 10rem;
+}
