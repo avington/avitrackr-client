@@ -46,6 +46,32 @@ export function reducer(state = initialState, action: fromActions.Actions): Prof
       };
     }
 
+    case fromActions.ActionTypes.Update: {
+      return {
+        ...state,
+        loading: true
+      };
+    }
+
+    case fromActions.ActionTypes.UpdateSuccess: {
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        entity: action.payload
+      };
+    }
+
+    case fromActions.ActionTypes.UpdateFail: {
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        entity: null,
+        error: action.payload
+      };
+    }
+
     default: {
       return state;
     }

@@ -13,7 +13,8 @@ export class ProfileEditComponent implements OnInit {
   @Input()
   profile: UserProfile;
 
-  @Output() updateProfile = new EventEmitter<UserProfile>();
+  @Output()
+  updateProfile = new EventEmitter<UserProfile>();
 
   editProfileForm: FormGroup;
 
@@ -27,7 +28,10 @@ export class ProfileEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const newProfile = {...this.editProfileForm.value};
-    this.updateProfile.emit(newProfile);
+    const profile = {
+      ...this.profile,
+      ...this.editProfileForm.value
+    };
+    this.updateProfile.emit(profile);
   }
 }

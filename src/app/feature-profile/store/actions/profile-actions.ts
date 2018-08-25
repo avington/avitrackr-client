@@ -8,7 +8,10 @@ import { UserProfile } from '../../../core/models/user-profile.model';
 export enum ActionTypes {
   Load = '[Profile] Load',
   LoadSuccess = '[Profile] Load Success',
-  LoadFail = '[Profile] Load Fail'
+  LoadFail = '[Profile] Load Fail',
+  Update = '[Profile] Update',
+  UpdateSuccess = '[Profile] Update Success',
+  UpdateFail = '[Profile] Update Fail'
 }
 
 /**
@@ -33,9 +36,32 @@ export class LoadProfileFail implements Action {
 
   constructor(public payload: any) {}
 }
+export class UpdateProfile implements Action {
+  readonly type = ActionTypes.Update;
+
+  constructor(public payload: UserProfile) {}
+}
+
+export class UpdateProfileSuccess implements Action {
+  readonly type = ActionTypes.UpdateSuccess;
+
+  constructor(public payload: UserProfile) {}
+}
+
+export class UpdateProfileFail implements Action {
+  readonly type = ActionTypes.UpdateFail;
+
+  constructor(public payload: any) {}
+}
 
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type Actions = LoadProfile | LoadProfileSuccess | LoadProfileFail;
+export type Actions =
+  | LoadProfile
+  | LoadProfileSuccess
+  | LoadProfileFail
+  | UpdateProfile
+  | UpdateProfileSuccess
+  | UpdateProfileFail;

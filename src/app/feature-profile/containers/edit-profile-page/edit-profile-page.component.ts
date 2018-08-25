@@ -44,5 +44,6 @@ export class EditProfilePageComponent implements OnInit {
 
   onUpdateProfile($event) {
     console.log('user profile updated', $event);
+    this.store.dispatch(new fromStore.UpdateProfile($event));
   }
 }
