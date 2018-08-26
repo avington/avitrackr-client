@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { MetaReducer, StoreModule } from '@ngrx/store';
 import { storeFreeze } from 'ngrx-store-freeze';
 
@@ -36,6 +38,9 @@ const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]
     EffectsModule.forRoot([...fromRootStore.rootEffects]),
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+
+    // toastr
+    ToastrModule.forRoot(environment.toasterSettings.module),
 
     // custom modules
     FeatureHomeModule,

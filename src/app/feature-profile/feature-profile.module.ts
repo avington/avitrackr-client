@@ -15,6 +15,8 @@ import * as fromStore from './store';
 import { CORE_PROVIDERS } from '../core/services';
 import { FEATURE_PROFILE_PROVIDERS } from 'src/app/feature-profile/services';
 import { EffectsModule } from '@ngrx/effects';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from '../../environments/environment';
 
 const ROUTES: Routes = [
   { path: '', component: ProfilePageComponent },
@@ -29,7 +31,8 @@ const ROUTES: Routes = [
     SharedLayoutsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('featureProfile', fromStore.featureProfileReducers),
-    EffectsModule.forFeature([...fromStore.FEATURE_PROFILE_EFFECTS])
+    EffectsModule.forFeature([...fromStore.FEATURE_PROFILE_EFFECTS]),
+    ToastrModule.forRoot(environment.toasterSettings.module),
   ],
   declarations: [
     ProfilePageComponent,

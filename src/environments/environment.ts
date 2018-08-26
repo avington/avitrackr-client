@@ -6,9 +6,16 @@ export const environment = {
   production: false,
   clientRoot: 'http://localhost:4200/',
   apiRoot: 'http://localhost:4095/api/',
-  auth: {
-    stsAuthority: 'http://localhost:4242/',
-    clientId: 'spa-client'
+  auth: { stsAuthority: 'http://localhost:4242/', clientId: 'spa-client' },
+  toasterSettings: {
+    module: {
+      timeOut: 1500,
+      positionClass: 'toast-top-right'
+    },
+    component: {
+      easeTime: 500,
+      easing: 'ease-out'
+    }
   }
 };
 

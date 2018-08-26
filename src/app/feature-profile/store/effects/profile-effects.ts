@@ -8,6 +8,8 @@ import { exhaustMap, map, catchError } from 'rxjs/operators';
 import { UserProfile } from '../../../core/models/user-profile.model';
 
 import * as fromRootStore from '../../../store';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../../../environments/environment';
 
 @Injectable()
 export class ProfileEffects {
@@ -39,9 +41,10 @@ export class ProfileEffects {
     ofType(fromActions.ActionTypes.UpdateSuccess),
     map((action: fromActions.UpdateProfileSuccess) => action.payload),
     map(action => {
+      this.toastr.success('Profile', 'Profile updated.', environment.toasterSettings.component);
       return new fromRootStore.GoAction({ path: ['/profile'] });
     })
   );
 
-  constructor(private actions$: Actions, private profileData: ProfileDataService) {}
+  constructor(private actions$: Actions, private profileData: ProfileDataService, private toastr: ToastrService) {}
 }
