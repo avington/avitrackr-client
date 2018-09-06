@@ -9,6 +9,7 @@
   border: none;
   color: white;
   transition: .2s;
+
   &:before,
   &:after {
     position: absolute;
@@ -20,16 +21,18 @@
     width: 2.8em;
     font-size: 1.2em;
     text-align: center;
-
     transition: .2s;
     transform-origin: 50% 60%;
   }
+
   &:before {
     background: $blue-grey-400;
   }
+
   &:hover {
     background: darken($blue-grey-400, 10%);
   }
+
   &:active,
   &:focus {
     background: darken($blue-grey-400, 30%);
@@ -43,13 +46,16 @@
 
 .btn {
   min-width: 7em;
+  cursor: pointer;
 }
 
 .arrow {
   background: $blue-grey-600;
+
   &:hover {
     background: darken($blue-grey-600, 10%);
   }
+
   &:active,
   &:focus {
     background: darken($blue-grey-600, 30%);
@@ -63,9 +69,11 @@
 
 .phone {
   background: #139675;
+
   &:hover {
     background: darken(#139675, 10%);
   }
+
   &:active,
   &:focus {
     background: darken(#139675, 20%);
@@ -79,16 +87,20 @@
 
 .email {
   background: #C673B3;
+
   &:hover {
     background: darken(#C673B3, 10%);
   }
+
   &:active,
   &:focus {
     background: darken(#C673B3, 20%);
   }
+
   &:after {
     content: "\F0E0";
   }
+
   &:hover:after {
     -webkit-animation: none;
     -webkit-transform: skew(-20deg);
@@ -100,8 +112,9 @@
 
 .search {
   &:after {
-    content:"\f002";
+    content: "\f002";
   }
+
   &:hover:after {
     -webkit-animation: none;
     -webkit-transform: scale(1.4);
@@ -110,23 +123,42 @@
   }
 }
 
-
 @-webkit-keyframes bounceright {
-  from { -webkit-transform: translateX(0); }
-  to   { -webkit-transform: translateX(3px); }
+  from {
+    -webkit-transform: translateX(0);
+  }
+
+  to {
+    -webkit-transform: translateX(3px);
+  }
 }
 
 @-webkit-keyframes wiggle {
-  from { -webkit-transform: rotate(0deg); }
-  to   { -webkit-transform: rotate(30deg); }
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(30deg);
+  }
 }
 
 @keyframes bounceright {
-  from { transform: translateX(0); }
-  to   { transform: translateX(3px); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(3px);
+  }
 }
 
 @keyframes wiggle {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(30deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(30deg);
+  }
 }

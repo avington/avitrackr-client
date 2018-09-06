@@ -8,8 +8,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { ToastrModule } from 'ngx-toastr';
 import { CORE_PROVIDERS } from '../core/services';
+import { StoreModule } from '@ngrx/store';
 
-const ROUTES: Routes = [{ path: '', component: MyTasksPageComponent }];
+// store folder
+import * as fromStore from './store';
+import * as fromCoreGuards from '../core/guards';
+import { MY_TASKS_PROVIDERS } from './services';
+import { EffectsModule } from '@ngrx/effects';
+import { MY_TASKS_EFFECTS } from './store/effects';
+import { MyTaskListComponent } from './components/my-task-list/my-task-list.component';
+import { AddTaskPageComponent } from './containers/add-task-page/add-task-page.component';
+import { EditTaskPageComponent } from './containers/edit-task-page/edit-task-page.component';
+
+const ROUTES: Routes = [
+  { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
+  { path: 'add', component: AddTaskPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
+  { path: 'edit/:id', component: EditTaskPageComponent, canActivate: [fromCoreGuards.AuthGuard] }
+];
 
 @NgModule({
   imports: [
@@ -18,9 +33,13 @@ const ROUTES: Routes = [{ path: '', component: MyTasksPageComponent }];
     HttpClientModule,
     SharedLayoutsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(environment.toasterSettings.module)
+    ToastrModule.forRoot(environment.toasterSettings.module),
+
+    // store
+    StoreModule.forFeature('featureMyTasks', fromStore.featureMyTaskReducers),
+    EffectsModule.forFeature(MY_TASKS_EFFECTS)
   ],
-  declarations: [MyTasksPageComponent],
-  providers: [...CORE_PROVIDERS]
+  declarations: [MyTasksPageComponent, MyTaskListComponent, AddTaskPageComponent, EditTaskPageComponent],
+  providers: [...CORE_PROVIDERS, ...MY_TASKS_PROVIDERS, ...fromCoreGuards.CORE_GUARDS]
 })
 export class FeatureMyTasksModule {}

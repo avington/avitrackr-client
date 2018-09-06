@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 
 import * as fromCoreStore from '../store';
 import { Store } from '@ngrx/store';
+import { AuthContext } from '../models/auth-context.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +13,9 @@ import { Store } from '@ngrx/store';
 export class AuthService {
   private _userManager: UserManager;
   private _user: User;
+  authContext: AuthContext;
 
-  constructor(private store: Store<fromCoreStore.CoreState>) {
+  constructor(private store: Store<fromCoreStore.CoreState>, private httpContext: HttpClient) {
     const config = {
       authority: environment.auth.stsAuthority,
       client_id: environment.auth.clientId,
@@ -68,5 +71,14 @@ export class AuthService {
 
   signoutRedirectCallback(): Promise<any> {
     return this._userManager.signoutRedirectCallback();
+  }
+  loadSecurityContext() {
+    /*
+    this.httpClient.get<AuthContext>(`${.apiRoot}Account/AuthContext`).subscribe(
+      context => {
+        this.authContext = context;
+      },
+      error => console.error(Utils.formatError(error))
+    );*/
   }
 }
