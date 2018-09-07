@@ -1,3 +1,4 @@
-<p>
-  add-task-page works!
-</p>
+<avi-default-layout [isLoading]="(isLoadingMyTask$ | async) || (isLoadingMyTaskStatuses$ | async)">
+
+  <avi-task-form [myTask]="myTask" [statuses]="statuses$ | async"></avi-task-form>
+</avi-default-layout>

@@ -1,12 +1,12 @@
 export interface MyTask {
   identifier: string;
   taskName: string;
-  taskDescription: string;
-  createdAt: Date;
-  expiresAt: Date;
-  notificationLocations: NotificationLocation[];
-  notifications: Notification[];
-  status: MyTaskStatus;
+  taskDescription?: string;
+  createdAt?: Date;
+  expiresAt?: Date;
+  notificationLocations?: NotificationLocation[];
+  notifications?: Notification[];
+  status?: MyTaskStatus;
 }
 
 export interface NotificationLocation {
@@ -36,5 +36,5 @@ export interface NotificationTiming {
 
 export interface MyTaskStatus {
   id: number;
-  statusName: string;
+  statusName?: string;
 }

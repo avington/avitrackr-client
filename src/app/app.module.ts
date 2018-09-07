@@ -21,6 +21,8 @@ import { FeatureHomeModule } from './feature-home/feature-home.module';
 import { SharedLayoutsModule } from './shared-layouts/shared-layouts.module';
 import * as fromCoreStore from './core/store';
 import { SHARED_COMPONENT_PRODIVERS } from './shared-components/services';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+
 
 const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
 
@@ -44,7 +46,8 @@ const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]
 
     // custom modules
     FeatureHomeModule,
-    SharedLayoutsModule
+    SharedLayoutsModule,
+    InputsModule
   ],
   providers: [...CORE_PROVIDERS, ...SHARED_COMPONENT_PRODIVERS],
   bootstrap: [AppComponent]

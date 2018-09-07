@@ -1,0 +1,40 @@
+<div class="form-default width-button-row">
+
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+
+    <div class="section">Task Name &amp; Description</div>
+    <div class="inner-wrap">
+      <label for="taskName">Task Name
+        <input id="taskName" type="text" name="taskName" formControlName="taskName" />
+      </label>
+      <label for="taskDescription">Description
+        <textarea id="taskDescription" type="text" name="taskDescription" formControlName="taskDescription"></textarea>
+      </label>
+      <div>
+        <label for="expiresAt" class="expires-at">Task Expires</label>
+        <kendo-datepicker formControlName="expiresAt" [min]="minExpiresAt" [max]="maxExpiresAt" required></kendo-datepicker>
+        <kendo-timepicker formControlName="expiresAtTime"></kendo-timepicker>
+      </div>
+      <div class="field-row">
+        <label>
+          Select gender
+          <div class="input-container">
+            <kendo-dropdownlist isRequired="true" formControlName="status" [data]="statuses" [textField]="'statusName'"
+              [valueField]="'id'">
+            </kendo-dropdownlist>
+          </div>
+
+        </label>
+      </div>
+
+
+    </div>
+
+    <div class="button-row">
+      <button class="btn arrow fas fa-arrow-right" type="submit">
+        <span>Save</span>
+      </button>
+    </div>
+  </form>
+
+</div>

@@ -13,6 +13,8 @@ import {
 
 import { MyTaskQuery } from '../../models/my-task-query';
 
+import * as fromRootStore from '../../../store';
+
 @Component({
   selector: 'avi-my-tasks-page',
   templateUrl: './my-tasks-page.component.html',
@@ -23,7 +25,7 @@ export class MyTasksPageComponent implements OnInit {
   pageInfo$: Observable<PagingInfo>;
   isLoading$: Observable<boolean>;
 
-  constructor(private store: Store<fromStore.FeatureTaskListState>) {}
+  constructor(private store: Store<fromStore.FeatureTaskListState>, private rootStore: Store<fromRootStore.State>) {}
 
   ngOnInit() {
     const queryInfo: MyTaskQuery = { skip: 0, openOnly: true, take: 10 };
@@ -33,5 +35,7 @@ export class MyTasksPageComponent implements OnInit {
     this.pageInfo$ = this.store.select(getMyTasksPagingInfoFromState);
   }
 
-  addTask() {}
+  addTask() {
+    this.rootStore.dispatch(new fromRootStore.GoAction({ path: ['/my-tasks/add'] }));
+  }
 }

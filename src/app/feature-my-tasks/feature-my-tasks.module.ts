@@ -19,6 +19,9 @@ import { MY_TASKS_EFFECTS } from './store/effects';
 import { MyTaskListComponent } from './components/my-task-list/my-task-list.component';
 import { AddTaskPageComponent } from './containers/add-task-page/add-task-page.component';
 import { EditTaskPageComponent } from './containers/edit-task-page/edit-task-page.component';
+import { TaskFormComponent } from './components/task-form/task-form.component';
+import { DatePickerModule, TimePickerModule } from '@progress/kendo-angular-dateinputs';
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 const ROUTES: Routes = [
   { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
@@ -35,11 +38,22 @@ const ROUTES: Routes = [
     ReactiveFormsModule,
     ToastrModule.forRoot(environment.toasterSettings.module),
 
+    // kendo
+    DatePickerModule,
+    TimePickerModule,
+    DropDownsModule,
+
     // store
     StoreModule.forFeature('featureMyTasks', fromStore.featureMyTaskReducers),
     EffectsModule.forFeature(MY_TASKS_EFFECTS)
   ],
-  declarations: [MyTasksPageComponent, MyTaskListComponent, AddTaskPageComponent, EditTaskPageComponent],
+  declarations: [
+    MyTasksPageComponent,
+    MyTaskListComponent,
+    AddTaskPageComponent,
+    EditTaskPageComponent,
+    TaskFormComponent
+  ],
   providers: [...CORE_PROVIDERS, ...MY_TASKS_PROVIDERS, ...fromCoreGuards.CORE_GUARDS]
 })
 export class FeatureMyTasksModule {}
