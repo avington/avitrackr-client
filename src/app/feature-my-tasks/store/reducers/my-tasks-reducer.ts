@@ -1,5 +1,5 @@
 import * as fromMyTasksAction from '../actions/my-tasks-actions';
-import { MyTask } from '../../models/my-tasks.interface';
+import { MyTask } from '../../models/my-tasks';
 import { PagingInfo } from '../../../core/models/paging-model';
 
 export interface MyTaskListState {

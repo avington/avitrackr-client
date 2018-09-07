@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MyTask } from '../../models/my-tasks.interface';
+import { MyTask } from '../../models/my-tasks';
 
 @Component({
   selector: 'avi-my-task-list',

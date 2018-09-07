@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { MyTaskQuery } from '../../models/my-task-query.interface';
-import { MyTask } from '../../models/my-tasks.interface';
+import { MyTaskQuery } from '../../models/my-task-query';
+import { MyTask } from '../../models/my-tasks';
 import { SummaryResonse } from '../../../core/models/summary-response-model';
 
 /**

@@ -5,9 +5,9 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import * as fromActions from '../actions';
 import { map, exhaustMap, catchError } from 'rxjs/operators';
 import { MyTasksService } from '../../services/my-tasks-data.service';
-import { MyTaskQuery } from '../../models/my-task-query.interface';
+import { MyTaskQuery } from '../../models/my-task-query';
 import { SummaryResonse } from '../../../core/models/summary-response-model';
-import { MyTask } from '../../models/my-tasks.interface';
+import { MyTask } from '../../models/my-tasks';
 
 @Injectable()
 export class MyTaskListEffects {
