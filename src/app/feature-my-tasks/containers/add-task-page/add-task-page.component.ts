@@ -24,7 +24,7 @@ export class AddTaskPageComponent implements OnInit {
   constructor(private store: Store<fromStore.FeatureTaskListState>) {}
 
   ngOnInit() {
-    this.myTask = { identifier: '', taskName: '', taskDescription: '', status: { id: 1 } };
+    this.myTask = this.newTask();
 
     this.store.select(getMyTaskStatusListLoadedFromState).subscribe((b: boolean) => {
       if (!b) {
@@ -34,5 +34,23 @@ export class AddTaskPageComponent implements OnInit {
 
     this.isLoadingMyTaskStatuses$ = this.store.select(getMyTaskStatusListLoadingFromState);
     this.statuses$ = this.store.select(getMyTaskStatusListFromState);
+  }
+
+  private newTask(): MyTask {
+    return {
+      identifier: '',
+      taskName: '',
+      taskDescription: '',
+      status: {
+        id: 1
+      },
+      notifications: [
+        {
+          identifier: '',
+          notificationTiming: { timingAmount: 15, timingAmountType: 'Minutes' },
+          notificationType: { id: 1, notificationTypeName: 'Email' }
+        }
+      ]
+    };
   }
 }

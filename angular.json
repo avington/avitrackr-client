@@ -133,5 +133,8 @@
       }
     }
   },
-  "defaultProject": "avitrackr-client"
+  "defaultProject": "avitrackr-client",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

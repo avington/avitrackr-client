@@ -1,6 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MyTask, MyTaskStatus } from '../../models/my-tasks';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import {
+  MyTask,
+  MyTaskStatus,
+  Notification,
+  NotificationLocation,
+  NotificationTiming,
+  NotificationType
+} from '../../models/my-tasks';
 import * as moment from 'moment';
 
 @Component({
@@ -38,7 +45,19 @@ export class TaskFormComponent implements OnInit {
       taskDescription: [this.myTask.taskDescription],
       expiresAt: [this.myTask.expiresAt, [Validators.required]],
       expiresAtTime: [this.myTask.expiresAt],
-      status: [this.myTask.status, [Validators.required]]
+      status: [this.myTask.status, [Validators.required]],
+      notifications: this.buildNotification(this.myTask.notifications)
     });
+  }
+
+  private buildNotification(notifications: Notification[]) {
+    return this.fb.array([
+      ...notifications.map((item: Notification, index: number) => {
+        return this.fb.group({
+          notificationAmount: [item.notificationTiming.timingAmount, [Validators.required]],
+          notificationAmountType: [item.notificationType]
+        });
+      })
+    ]);
   }
 }
