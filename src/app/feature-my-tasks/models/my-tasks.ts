@@ -35,6 +35,6 @@ export interface NotificationTiming {
 }
 
 export interface MyTaskStatus {
-  id: number;
+  id?: number;
   statusName?: string;
 }
