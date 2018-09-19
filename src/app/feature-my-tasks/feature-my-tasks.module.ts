@@ -22,6 +22,7 @@ import { EditTaskPageComponent } from './containers/edit-task-page/edit-task-pag
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { DatePickerModule, TimePickerModule } from '@progress/kendo-angular-dateinputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { NotificationGroupComponent } from './components/notification-group/notification-group.component';
 
 const ROUTES: Routes = [
   { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
@@ -52,7 +53,8 @@ const ROUTES: Routes = [
     MyTaskListComponent,
     AddTaskPageComponent,
     EditTaskPageComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    NotificationGroupComponent
   ],
   providers: [...CORE_PROVIDERS, ...MY_TASKS_PROVIDERS, ...fromCoreGuards.CORE_GUARDS]
 })

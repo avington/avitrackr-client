@@ -17,7 +17,7 @@
       </div>
       <div class="field-row">
         <label>
-          Select gender
+          Task Status
           <div class="input-container">
             <kendo-dropdownlist isRequired="true" formControlName="status" [data]="statuses" [textField]="'statusName'"
               [valueField]="'id'">
@@ -26,8 +26,12 @@
 
         </label>
       </div>
+    </div>
 
-
+    <div class="section">Notifications</div>
+    <div class="inner-wrap">
+      <avi-notification-group *ngFor="let item of taskForm.get('notifications').controls; let i=index" [index]="i"
+        [notification]="item"></avi-notification-group>
     </div>
 
     <div class="button-row">

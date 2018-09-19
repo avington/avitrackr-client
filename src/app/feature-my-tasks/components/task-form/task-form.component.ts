@@ -9,6 +9,7 @@ import {
   NotificationType
 } from '../../models/my-tasks';
 import * as moment from 'moment';
+import { NotificationGroupComponent } from '../notification-group/notification-group.component';
 
 @Component({
   selector: 'avi-task-form',
@@ -37,7 +38,9 @@ export class TaskFormComponent implements OnInit {
       .toDate();
   }
 
-  onSubmit() {}
+  onSubmit() {
+    console.log(this.myTask);
+  }
 
   private buildForm() {
     this.taskForm = this.fb.group({
@@ -52,12 +55,10 @@ export class TaskFormComponent implements OnInit {
 
   private buildNotification(notifications: Notification[]) {
     return this.fb.array([
-      ...notifications.map((item: Notification, index: number) => {
-        return this.fb.group({
-          notificationAmount: [item.notificationTiming.timingAmount, [Validators.required]],
-          notificationAmountType: [item.notificationType]
-        });
+      ...notifications.map((notification: Notification) => {
+        return NotificationGroupComponent.buildNotificationFormGroup(notification);
       })
+      
     ]);
   }
 }

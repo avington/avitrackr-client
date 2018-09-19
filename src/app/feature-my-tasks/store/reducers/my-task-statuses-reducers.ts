@@ -28,7 +28,13 @@ export function myTaskStatusReducer(
     }
 
     case fromActions.MyTaskStatusesActionTypes.Success: {
-      return { ...state, list: null, loading: false, loaded: false, error: action.payload };
+      return {
+        ...state,
+        list: null,
+        loading: false,
+        loaded: false,
+        error: action.payload
+      };
     }
 
     default: {

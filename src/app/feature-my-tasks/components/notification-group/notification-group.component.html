@@ -1,0 +1,12 @@
+<div class="notification-row" [formGroup]="notification">
+  <div class="amount">
+    <label class="sr-only" for="notificationAmount">Amount</label>
+    <input formControlName="notificationAmount" id="notificationAmount" type="number">
+  </div>
+  <div class="amount-type">
+    <label class="sr-only" for="notificationAmountType">Duration</label>
+    <kendo-dropdownlist id="notificationAmountType" [data]="listItems" formControlName="notificationAmountType">
+    </kendo-dropdownlist>
+  </div>
+
+</div>
