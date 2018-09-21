@@ -23,6 +23,9 @@ export class TaskFormComponent implements OnInit {
   @Input()
   statuses: MyTaskStatus[];
 
+  @Input()
+  notificationTypes: NotificationType[];
+
   minExpiresAt: Date;
   maxExpiresAt: Date;
 

@@ -8,7 +8,11 @@ import {
   getMyTaskStatusListLoadingFromState,
   getMyTaskStatusListFromState
 } from '../../store/selectors/my-task-statuses-selectors';
-import { MyTask, MyTaskStatus } from '../../models/my-tasks';
+import { MyTask, MyTaskStatus, NotificationType } from '../../models/my-tasks';
+import {
+  getNotificationTypesLoadedFromState,
+  getNotificationTypesFromState
+} from '../../store/selectors/notification-types-selectors';
 
 @Component({
   selector: 'avi-add-task-page',
@@ -20,11 +24,16 @@ export class AddTaskPageComponent implements OnInit {
   isLoadingMyTaskStatuses$: Observable<boolean>;
   myTask: MyTask;
   statuses$: Observable<MyTaskStatus[]>;
+  isNotificationTypesLoaded$: Observable<boolean>;
+  isNotificationTypesLoading$: Observable<boolean>;
+  notificationTypes$: Observable<NotificationType[]>;
 
   constructor(private store: Store<fromStore.FeatureTaskListState>) {}
 
   ngOnInit() {
     this.myTask = this.newTask();
+
+    this.store.select(getNotificationTypesLoadedFromState).subscribe((b: boolean) => {});
 
     this.store.select(getMyTaskStatusListLoadedFromState).subscribe((b: boolean) => {
       if (!b) {
@@ -32,8 +41,16 @@ export class AddTaskPageComponent implements OnInit {
       }
     });
 
-    this.isLoadingMyTaskStatuses$ = this.store.select(getMyTaskStatusListLoadingFromState);
+    this.store.select(getNotificationTypesLoadedFromState).subscribe((b: boolean) => {
+      if (!b) {
+        this.store.dispatch(new fromStore.LoadNotificationTypes());
+      }
+    });
+
+    this.isNotificationTypesLoaded$ = this.store.select(getMyTaskStatusListLoadedFromState);
+    this.isNotificationTypesLoading$ = this.store.select(getMyTaskStatusListLoadingFromState);
     this.statuses$ = this.store.select(getMyTaskStatusListFromState);
+    this.notificationTypes$ = this.store.select(getNotificationTypesFromState);
   }
 
   private newTask(): MyTask {
