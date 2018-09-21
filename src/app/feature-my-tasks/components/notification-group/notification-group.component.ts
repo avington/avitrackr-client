@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Notification } from '../../models/my-tasks';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Notification, NotificationType } from '../../models/my-tasks';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -14,12 +14,19 @@ export class NotificationGroupComponent implements OnInit {
   @Input()
   notification: FormGroup;
 
-  listItems: string[] = ['minutes', 'hours', 'days', 'weeks', 'months'];
+  @Input()
+  notificationTypes: NotificationType[];
+
+  @Output()
+  removed: EventEmitter<number> = new EventEmitter<number>();
+
+  listItems: string[] = ['Minutes', 'Hours', 'Days', 'Weeks', 'Months'];
 
   static buildNotificationFormGroup(notifcation: Notification) {
     return new FormGroup({
       notificationAmount: new FormControl(notifcation.notificationTiming.timingAmount),
-      notificationAmountType: new FormControl(notifcation.notificationTiming.timingAmountType)
+      notificationAmountType: new FormControl(notifcation.notificationTiming.timingAmountType),
+      notificationType: new FormControl(notifcation.notificationType)
     });
   }
 

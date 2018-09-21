@@ -23,6 +23,7 @@ import { TaskFormComponent } from './components/task-form/task-form.component';
 import { DatePickerModule, TimePickerModule } from '@progress/kendo-angular-dateinputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { NotificationGroupComponent } from './components/notification-group/notification-group.component';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
 
 const ROUTES: Routes = [
   { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
@@ -43,6 +44,7 @@ const ROUTES: Routes = [
     DatePickerModule,
     TimePickerModule,
     DropDownsModule,
+    ButtonsModule,
 
     // store
     StoreModule.forFeature('featureMyTasks', fromStore.featureMyTaskReducers),

@@ -31,8 +31,12 @@
     <div class="section">Notifications</div>
     <div class="inner-wrap" *ngIf="!!notificationTypes">
       <avi-notification-group *ngFor="let item of taskForm.get('notifications').controls; let i=index" [index]="i"
-        [notification]="item"></avi-notification-group>
+        [notification]="item" [notificationTypes]="notificationTypes" (removed)="onRemoved($event)"></avi-notification-group>
+      <div class="add-notification-button-row">
+        <button kendoButton [look]="'flat'" type="button" (click)="addNotification()">Add Notification</button>
+      </div>
     </div>
+
 
     <div class="button-row">
       <button class="btn arrow fas fa-arrow-right" type="submit">

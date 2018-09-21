@@ -1,12 +1,23 @@
 .notification-row {
   display: flex;
+  justify-content: flex-start;
 }
 
 .amount {
   width: 5.00rem;
-  margin-right: 1.0rem;
+  margin: 0 0 0 0.5rem;
 
   input {
     width: 4.00rem;
+    padding-right: 0;
+    height: 1.75rem;
   }
+}
+
+#notificationType {
+  width: 10.0rem;
+}
+
+#notificationAmountType {
+  width: 7.0rem;
 }

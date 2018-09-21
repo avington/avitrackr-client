@@ -41,7 +41,26 @@ export class TaskFormComponent implements OnInit {
       .toDate();
   }
 
+  addNotification() {
+    this.mapFormToModel();
+    this.myTask.notifications.push({
+      identifier: '',
+      notificationTiming: { timingAmount: 15, timingAmountType: 'Minutes' },
+      notificationType: { id: 1, notificationTypeName: 'Email' }
+    });
+    this.buildForm();
+  }
+
+  onRemoved($event) {
+    this.myTask.notifications = this.myTask.notifications.filter(
+      (item: Notification, index: number) => $event !== index
+    );
+
+    this.buildForm();
+  }
+
   onSubmit() {
+    this.mapFormToModel();
     console.log(this.myTask);
   }
 
@@ -61,7 +80,21 @@ export class TaskFormComponent implements OnInit {
       ...notifications.map((notification: Notification) => {
         return NotificationGroupComponent.buildNotificationFormGroup(notification);
       })
-      
     ]);
+  }
+
+  private mapFormToModel() {
+    const formValues = this.taskForm.value;
+
+    const notifications: Notification[] = formValues.notifications.map(n => {
+      const notification: Notification = {
+        identifier: n.identifier,
+        notificationTiming: { timingAmount: n.notificationAmount, timingAmountType: n.notificationAmountType },
+        notificationType: { id: n.notificationType.id, notificationTypeName: n.notificationType.notificationTypeName }
+      };
+      return notification;
+    });
+
+    this.myTask = { ...this.myTask, ...formValues, notifications };
   }
 }

@@ -1,4 +1,10 @@
 <div class="notification-row" [formGroup]="notification">
+  <div class="amount-type">
+    <label class="sr-only" for="notificationType">Duration</label>
+    <kendo-dropdownlist id="notificationType" [data]="notificationTypes" [textField]="'notificationTypeName'"
+      [valueField]="'id'" formControlName="notificationType">
+    </kendo-dropdownlist>
+  </div>
   <div class="amount">
     <label class="sr-only" for="notificationAmount">Amount</label>
     <input formControlName="notificationAmount" id="notificationAmount" type="number">
@@ -8,5 +14,7 @@
     <kendo-dropdownlist id="notificationAmountType" [data]="listItems" formControlName="notificationAmountType">
     </kendo-dropdownlist>
   </div>
-
+  <div class="remove-btn">
+    <button kendoButton type="button" [iconClass]="'fa fa-times fa-fw'" (click)="removed.emit(index)"></button>
+  </div>
 </div>
