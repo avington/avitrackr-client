@@ -1,4 +1,6 @@
 <avi-default-layout [isLoading]="(isLoadingMyTask$ | async) || (isLoadingMyTaskStatuses$ | async) || (isNotificationTypesLoading$ | async)">
 
-  <avi-task-form [myTask]="myTask" [statuses]="statuses$ | async"></avi-task-form>
+  <avi-task-form [myTask]="myTask" [statuses]="statuses$ | async" [notificationTypes]="notificationTypes$ | async"></avi-task-form>
+
+  
 </avi-default-layout>
