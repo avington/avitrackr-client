@@ -3,10 +3,15 @@ export interface MyTask {
   taskName: string;
   taskDescription?: string;
   createdAt?: Date;
+  startsAt?: Date;
+  startsAtTime?: any;
   expiresAt?: Date;
+  expiresAtTime?: any;
   notificationLocations?: NotificationLocation[];
   notifications?: Notification[];
   status?: MyTaskStatus;
+  showBusy?: boolean;
+  isVisible?: boolean;
 }
 
 export interface NotificationLocation {

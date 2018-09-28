@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import * as moment from 'moment';
+
 import * as fromStore from '../../store';
 import { Store } from '@ngrx/store';
 import {
@@ -54,13 +56,27 @@ export class AddTaskPageComponent implements OnInit {
   }
 
   private newTask(): MyTask {
+    const startDateTime = moment()
+      .startOf('hour')
+      .add('h', 1)
+      .toDate();
+
+    const expireDateTime = moment()
+      .startOf('hour')
+      .add('h', 2)
+      .toDate();
+
     return {
       identifier: '',
       taskName: '',
       taskDescription: '',
-      status: {
-        id: 1
-      },
+      showBusy: true,
+      isVisible: true,
+      startsAt: startDateTime,
+      startsAtTime: startDateTime,
+      expiresAt: expireDateTime,
+      expiresAtTime: expireDateTime,
+      status: { id: 1 },
       notifications: [
         {
           identifier: '',

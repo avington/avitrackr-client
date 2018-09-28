@@ -4,12 +4,24 @@
 
     <div class="section">Task Name &amp; Description</div>
     <div class="inner-wrap">
-      <label for="taskName">Task Name
+      <label for="taskName" [ngClass]="{'error': taskForm.controls['taskName'].errors && taskForm.controls['taskName'].touched}">Task
+        Name*
         <input id="taskName" type="text" name="taskName" formControlName="taskName" />
       </label>
       <label for="taskDescription">Description
         <textarea id="taskDescription" type="text" name="taskDescription" formControlName="taskDescription"></textarea>
       </label>
+      <label for="showBusy">
+        <input id="showBusy" type="checkbox" name="showBusy" formControlName="showBusy" />Show Busy
+      </label>
+      <label for="isVisible">
+        <input id="isVisible" type="checkbox" name="isVisible" formControlName="isVisible" />Is Visible
+      </label>
+      <div class="task-starts">
+        <label for="startsAt" class="expires-at">Task Starts</label>
+        <kendo-datepicker formControlName="startsAt" [min]="minExpiresAt" [max]="maxExpiresAt" required></kendo-datepicker>
+        <kendo-timepicker formControlName="startsAtTime"></kendo-timepicker>
+      </div>
       <div>
         <label for="expiresAt" class="expires-at">Task Expires</label>
         <kendo-datepicker formControlName="expiresAt" [min]="minExpiresAt" [max]="maxExpiresAt" required></kendo-datepicker>

@@ -68,10 +68,14 @@ export class TaskFormComponent implements OnInit {
     this.taskForm = this.fb.group({
       taskName: [this.myTask.taskName, [Validators.required]],
       taskDescription: [this.myTask.taskDescription],
+      startsAt: [this.myTask.startsAt],
+      startsAtTime: [this.myTask.startsAtTime],
       expiresAt: [this.myTask.expiresAt, [Validators.required]],
       expiresAtTime: [this.myTask.expiresAt],
       status: [this.myTask.status, [Validators.required]],
-      notifications: this.buildNotification(this.myTask.notifications)
+      notifications: this.buildNotification(this.myTask.notifications),
+      showBusy: [this.myTask.showBusy],
+      isVisible: [this.myTask.isVisible]
     });
   }
 
