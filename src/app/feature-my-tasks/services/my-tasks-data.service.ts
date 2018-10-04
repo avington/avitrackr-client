@@ -12,8 +12,12 @@ export class MyTasksService {
   constructor(private httpClient: HttpClient) {}
 
   getMyTasks(query: MyTaskQuery) {
-      return this.httpClient.get<SummaryResonse<MyTask[]>>(
-          `${environment.apiRoot}mytasks?skip=${query.skip}&take=${query.take}&openOnly=${query.openOnly}`
-        );
+    return this.httpClient.get<SummaryResonse<MyTask[]>>(
+      `${environment.apiRoot}mytasks?skip=${query.skip}&take=${query.take}&openOnly=${query.openOnly}`
+    );
+  }
+
+  addMyTask(myTask: MyTask) {
+    return this.httpClient.post<MyTask>(`${environment.apiRoot}mytasks`, myTask);
   }
 }

@@ -14,7 +14,7 @@ const initialState: MyTaskState = {
   loaded: false
 };
 
-export function reducer(state = initialState, action: fromActions.MyTaskActions): MyTaskState {
+export function myTaskReducer(state = initialState, action: fromActions.MyTaskActions): MyTaskState {
   switch (action.type) {
     case fromActions.MyTaskActionTypes.InsertTask: {
       return {
