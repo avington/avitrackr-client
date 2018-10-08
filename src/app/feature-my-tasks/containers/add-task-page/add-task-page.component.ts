@@ -15,6 +15,7 @@ import {
   getNotificationTypesLoadedFromState,
   getNotificationTypesFromState
 } from '../../store/selectors/notification-types-selectors';
+import { getMyTaskEntityLoadingFromFeatureState } from '../../store/selectors/my-task-selectors';
 
 @Component({
   selector: 'avi-add-task-page',
@@ -28,6 +29,7 @@ export class AddTaskPageComponent implements OnInit {
   statuses$: Observable<MyTaskStatus[]>;
   isNotificationTypesLoaded$: Observable<boolean>;
   isNotificationTypesLoading$: Observable<boolean>;
+  isMyTaskLoading$: Observable<boolean>;
   notificationTypes$: Observable<NotificationType[]>;
 
   constructor(private store: Store<fromStore.FeatureTaskListState>) {}
@@ -49,10 +51,15 @@ export class AddTaskPageComponent implements OnInit {
       }
     });
 
+    this.isMyTaskLoading$ = this.store.select(getMyTaskEntityLoadingFromFeatureState);
     this.isNotificationTypesLoaded$ = this.store.select(getMyTaskStatusListLoadedFromState);
     this.isNotificationTypesLoading$ = this.store.select(getMyTaskStatusListLoadingFromState);
     this.statuses$ = this.store.select(getMyTaskStatusListFromState);
     this.notificationTypes$ = this.store.select(getNotificationTypesFromState);
+  }
+
+  onSubmitted($event: MyTask) {
+    this.store.dispatch(new fromStore.InsertTask($event));
   }
 
   private newTask(): MyTask {

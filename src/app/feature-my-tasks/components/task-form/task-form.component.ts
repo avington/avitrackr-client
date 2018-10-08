@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import {
   MyTask,
@@ -10,6 +10,7 @@ import {
 } from '../../models/my-tasks';
 import * as moment from 'moment';
 import { NotificationGroupComponent } from '../notification-group/notification-group.component';
+import { OuterSubscriber } from 'rxjs/internal/OuterSubscriber';
 
 @Component({
   selector: 'avi-task-form',
@@ -25,6 +26,9 @@ export class TaskFormComponent implements OnInit {
 
   @Input()
   notificationTypes: NotificationType[];
+
+  @Output()
+  submitted: EventEmitter<MyTask> = new EventEmitter<MyTask>();
 
   minExpiresAt: Date;
   maxExpiresAt: Date;
@@ -61,7 +65,7 @@ export class TaskFormComponent implements OnInit {
 
   onSubmit() {
     this.mapFormToModel();
-    console.log(this.myTask);
+    this.submitted.emit(this.myTask);
   }
 
   private buildForm() {
