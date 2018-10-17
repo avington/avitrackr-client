@@ -1,5 +1,7 @@
 <avi-default-layout [isLoading]="isLoading$ | async">
 
+  <div class="empty-task-list" *ngIf="myTasks$ | async as myTasks"></div>
+
   <div class="empty-task-list" *ngIf="!(myTasks$ | async)?.length">
     <div class="card">
       <h3>
@@ -15,7 +17,7 @@
 
   <div class="my-task-list" *ngIf="(myTasks$ | async)?.length">
     <div class="card">
-      <avi-my-task-list [myTasks]="myTasks$ | async"></avi-my-task-list>
+      <avi-my-task-list [myTasks]="tasks"></avi-my-task-list>
       <div class="button-row">
         <button class="btn arrow fas fa-arrow-right" type="submit" (click)="addTask()">
           <span>Add a Task</span>

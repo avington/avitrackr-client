@@ -24,7 +24,7 @@ export function reducer(state = initialState, action: fromMyTasksAction.MyTasksA
     }
 
     case fromMyTasksAction.MyTasksActionTypes.LoadSuccess: {
-      const list = action.payload.sumamry;
+      const list = action.payload.summary;
       const pagingInfo = action.payload.pagingInfo;
 
       return { ...state, loading: false, loaded: true, pagingInfo, list };

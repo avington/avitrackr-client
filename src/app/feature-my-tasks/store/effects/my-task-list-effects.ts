@@ -23,5 +23,5 @@ export class MyTaskListEffects {
     })
   );
 
-  constructor(private actions$: Actions, private data: MyTasksService) {}
+  constructor(private actions$: Actions, private data: MyTasksService) { }
 }

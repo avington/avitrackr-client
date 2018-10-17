@@ -1,6 +1,6 @@
 import { PagingInfo } from './paging-model';
 
 export interface SummaryResonse<T> {
-  sumamry: T;
+  summary: T;
   pagingInfo: PagingInfo;
 }
