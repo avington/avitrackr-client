@@ -12,7 +12,10 @@ export const getMyTasksListFromState = createSelector(
 );
 export const getMyTasksPagingInfoFromState = createSelector(
   getMyTaskListStateFromFeatureState,
-  (state: fromReducer.MyTaskListState) => state.pagingInfo
+  (state: fromReducer.MyTaskListState) => {
+    console.log('state', state);
+    return state.pagingInfo;
+  }
 );
 
 export const getMyTasksLoadingFromState = createSelector(

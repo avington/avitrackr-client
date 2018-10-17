@@ -26,8 +26,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              {
+            "styles": [{
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
               "src/styles.scss"
@@ -36,12 +35,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -78,8 +75,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              {
+            "styles": [{
                 "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
               },
               "src/styles.scss"

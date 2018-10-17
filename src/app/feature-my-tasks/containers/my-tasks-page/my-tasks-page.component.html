@@ -1,6 +1,8 @@
 <avi-default-layout [isLoading]="isLoading$ | async">
 
-  <div class="empty-task-list" *ngIf="myTasks$ | async as myTasks"></div>
+  <div class="empty-task-list" *ngIf="myTasks$ | async as myTasks">
+    <avi-my-task-list [myTasks]="myTask"></avi-my-task-list>
+  </div>
 
   <div class="empty-task-list" *ngIf="!(myTasks$ | async)?.length">
     <div class="card">
@@ -16,13 +18,11 @@
   </div>
 
   <div class="my-task-list" *ngIf="(myTasks$ | async)?.length">
-    <div class="card">
-      <avi-my-task-list [myTasks]="tasks"></avi-my-task-list>
-      <div class="button-row">
-        <button class="btn arrow fas fa-arrow-right" type="submit" (click)="addTask()">
-          <span>Add a Task</span>
-        </button>
-      </div>
+    <avi-my-task-list [myTasks]="myTasks$ | async" [pagingInfo]="pagingInfo$ | async"></avi-my-task-list>
+    <div class="button-row">
+      <button class="btn arrow fas fa-arrow-right" type="submit" (click)="addTask()">
+        <span>Add a Task</span>
+      </button>
     </div>
   </div>
 
