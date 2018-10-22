@@ -1,9 +1,5 @@
 <avi-default-layout [isLoading]="isLoading$ | async">
 
-  <div class="empty-task-list" *ngIf="myTasks$ | async as myTasks">
-    <avi-my-task-list [myTasks]="myTask"></avi-my-task-list>
-  </div>
-
   <div class="empty-task-list" *ngIf="!(myTasks$ | async)?.length">
     <div class="card">
       <h3>

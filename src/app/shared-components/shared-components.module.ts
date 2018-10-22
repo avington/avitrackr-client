@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromStore from './store';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterModule } from '@angular/router';
+import { PagingBarComponent } from './components/paging-bar/paging-bar.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     EffectsModule.forFeature(fromStore.SHARED_COMPONENT_EFFECTS)
   ],
-  declarations: [SummaryTaskListContainerComponent],
-  exports: [SummaryTaskListContainerComponent]
+  declarations: [SummaryTaskListContainerComponent, PagingBarComponent],
+  exports: [SummaryTaskListContainerComponent, PagingBarComponent]
 })
-export class SharedComponentsModule {}
+export class SharedComponentsModule { }

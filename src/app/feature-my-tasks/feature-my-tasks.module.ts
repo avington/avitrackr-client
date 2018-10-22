@@ -24,6 +24,7 @@ import { DatePickerModule, TimePickerModule } from '@progress/kendo-angular-date
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { NotificationGroupComponent } from './components/notification-group/notification-group.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
 
 const ROUTES: Routes = [
   { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
@@ -37,6 +38,7 @@ const ROUTES: Routes = [
     RouterModule.forChild(ROUTES),
     HttpClientModule,
     SharedLayoutsModule,
+    SharedComponentsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(environment.toasterSettings.module),
 
@@ -60,4 +62,4 @@ const ROUTES: Routes = [
   ],
   providers: [...CORE_PROVIDERS, ...MY_TASKS_PROVIDERS, ...fromCoreGuards.CORE_GUARDS]
 })
-export class FeatureMyTasksModule {}
+export class FeatureMyTasksModule { }
