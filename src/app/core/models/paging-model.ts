@@ -4,4 +4,5 @@ export interface PagingInfo {
   nextSkip?: number;
   take?: number;
   total?: number;
+  currentPage?: number;
 }

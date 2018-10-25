@@ -3,7 +3,8 @@
     {{pagingInfo.skip + 1}} to {{pagingInfo.nextSkip}} of {{pagingInfo.total}}
   </div>
   <div class="paging-buttons">
-    <button class="btn-paging">Previous</button>
-    <button class="btn-paging">Previous</button>
+    <button class="btn-paging" [disabled]="isNil(pagingInfo.previousSkip)" (click)="previousPage.emit(pagingInfo.previousSkip)">Prev</button>
+    <span>{{pagingInfo.currentPage}}</span>
+    <button class="btn-paging" [disabled]="isNil(pagingInfo.nextSkip)" (click)="nextPage.emit(pagingInfo.nextSkip)">Next</button>
   </div>
 </div>
