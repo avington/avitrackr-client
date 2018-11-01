@@ -22,9 +22,12 @@ import { EditTaskPageComponent } from './containers/edit-task-page/edit-task-pag
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { DatePickerModule, TimePickerModule } from '@progress/kendo-angular-dateinputs';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
+import { MenuModule } from '@progress/kendo-angular-menu';
 import { NotificationGroupComponent } from './components/notification-group/notification-group.component';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { MyTaskCardComponent } from './components/my-task-card/my-task-card.component';
+import { InputsModule } from '@progress/kendo-angular-inputs';
 
 const ROUTES: Routes = [
   { path: '', component: MyTasksPageComponent, canActivate: [fromCoreGuards.AuthGuard] },
@@ -47,6 +50,8 @@ const ROUTES: Routes = [
     TimePickerModule,
     DropDownsModule,
     ButtonsModule,
+    InputsModule,
+    MenuModule,
 
     // store
     StoreModule.forFeature('featureMyTasks', fromStore.featureMyTaskReducers),
@@ -58,7 +63,8 @@ const ROUTES: Routes = [
     AddTaskPageComponent,
     EditTaskPageComponent,
     TaskFormComponent,
-    NotificationGroupComponent
+    NotificationGroupComponent,
+    MyTaskCardComponent
   ],
   providers: [...CORE_PROVIDERS, ...MY_TASKS_PROVIDERS, ...fromCoreGuards.CORE_GUARDS]
 })

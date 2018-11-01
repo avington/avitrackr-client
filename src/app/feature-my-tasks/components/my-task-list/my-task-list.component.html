@@ -1,6 +1,13 @@
 <div class="paging-row">
-    <avi-paging-bar [pagingInfo]="pagingInfo"></avi-paging-bar>
+  <avi-paging-bar [pagingInfo]="pagingInfo"></avi-paging-bar>
 </div>
+
+<section class="my-task-section" *ngIf="myTasks">
+  <div class="tasks" *ngFor="let task of myTasks">
+    <avi-my-task-card [myTask]="task" [statuses]="statuses"></avi-my-task-card>
+  </div>
+
+</section>
 
 <p>
   my-task-list works!

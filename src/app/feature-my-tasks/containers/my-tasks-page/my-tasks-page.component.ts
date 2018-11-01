@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromStore from '../../store';
 import { Observable } from 'rxjs';
-import { MyTask } from '../../models/my-tasks';
+import { MyTask, MyTaskStatus } from '../../models/my-tasks';
 import { PagingInfo } from '../../../core/models/paging-model';
 
 import {
@@ -15,6 +15,11 @@ import { MyTaskQuery } from '../../models/my-task-query';
 
 import * as fromRootStore from '../../../store';
 
+import {
+  getMyTaskStatusListLoadedFromState, getMyTaskStatusListFromState
+} from '../../store/selectors/my-task-statuses-selectors';
+import { filter } from 'rxjs/operators';
+
 @Component({
   selector: 'avi-my-tasks-page',
   templateUrl: './my-tasks-page.component.html',
@@ -26,6 +31,7 @@ export class MyTasksPageComponent implements OnInit {
   pageInfo: PagingInfo;
   pagingInfo$: Observable<PagingInfo>;
   isLoading$: Observable<boolean>;
+  statuses: string[];
 
   constructor(private store: Store<fromStore.FeatureTaskListState>, private rootStore: Store<fromRootStore.State>) { }
 
@@ -35,6 +41,16 @@ export class MyTasksPageComponent implements OnInit {
     this.myTasks$ = this.store.select(getMyTasksListFromState);
     this.pagingInfo$ = this.store.select(getMyTasksPagingInfoFromState);
     this.isLoading$ = this.store.select(getMyTasksLoadingFromState);
+    this.store.select(getMyTaskStatusListLoadedFromState).subscribe((b: boolean) => {
+      if (!b) {
+        this.store.dispatch(new fromStore.MyTaskStatusesLoad());
+      }
+    });
+    this.store.select(getMyTaskStatusListFromState).pipe(
+      filter(s => !!s)
+    ).subscribe((items: MyTaskStatus[]) => {
+      this.statuses = items.map((status: MyTaskStatus) => status.statusName);
+    });
 
   }
 

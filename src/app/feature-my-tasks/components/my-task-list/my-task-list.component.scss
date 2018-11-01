@@ -2,3 +2,11 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.my-task-section {
+  margin: 2.00rem auto;
+  width: 95%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 30px;
+}

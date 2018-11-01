@@ -14,7 +14,7 @@
   </div>
 
   <div class="my-task-list" *ngIf="(myTasks$ | async)?.length">
-    <avi-my-task-list [myTasks]="myTasks$ | async" [pagingInfo]="pagingInfo$ | async"></avi-my-task-list>
+    <avi-my-task-list [myTasks]="myTasks$ | async" [pagingInfo]="pagingInfo$ | async" [statuses]="statuses"></avi-my-task-list>
     <div class="button-row">
       <button class="btn arrow fas fa-arrow-right" type="submit" (click)="addTask()">
         <span>Add a Task</span>

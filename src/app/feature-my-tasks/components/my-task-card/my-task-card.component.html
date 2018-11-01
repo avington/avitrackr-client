@@ -1,0 +1,30 @@
+<div class="task-container">
+
+  <div class="task-name">{{myTask.taskName}}</div>
+
+  <div class="task-starts">
+    <span>Starts:</span>
+    <span>{{myTask.startsAt | date: 'shortDate'}} {{myTask.startsAt | date: 'shortTime'}}</span>
+  </div>
+
+  <div class="task-expires">
+    <span>Expires:</span>
+    <span>{{myTask.expiresAt | date: 'shortDate'}} {{myTask.expiresAt | date: 'shortTime'}}</span>
+  </div>
+
+  <div class="task-status">
+    <kendo-menu [items]="statusMenu">
+    </kendo-menu>
+  </div>
+
+  <div class="task-description">{{myTask.taskDescription}}</div>
+
+  <div class="task-button-row">
+    <div class="button-task-row">
+      <button kendoButton>
+        <i class="far fa-edit" title=Edit></i>
+      </button>
+    </div>
+  </div>
+
+</div>

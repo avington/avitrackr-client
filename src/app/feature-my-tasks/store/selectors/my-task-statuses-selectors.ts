@@ -7,6 +7,7 @@ import {
   getMyTaskStatusListLoaded
 } from '../reducers';
 
+
 export const getMyTaskStatusesStateFromFeature = createSelector(
   getFeatureMyTaskState,
   (state: FeatureTaskListState) => state.myTaskStatusList

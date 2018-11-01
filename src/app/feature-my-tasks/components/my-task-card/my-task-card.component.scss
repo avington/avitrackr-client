@@ -1,0 +1,36 @@
+@import "../../../../styles/helpers/colors";
+
+.task-container {
+  height: 300px;
+  border: $blue-grey-100 solid 1px;
+  border-left: $blue-grey-100 solid 4px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  color: $grey-700;
+  padding: 1.00rem 0.500rem 1.00rem 0.500rem;
+}
+
+.task-name {
+  font-size: 1.10rem;
+  font-weight: 600;
+  padding: 0.20rem 0;
+}
+
+.task-description {
+  height: 7.25rem;
+}
+
+.task-starts,
+.task-expires {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1.0rem;
+}
+
+.button-task-row {
+  display: flex;
+  justify-content: flex-end;
+}

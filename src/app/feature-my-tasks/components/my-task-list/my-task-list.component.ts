@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MyTask } from '../../models/my-tasks';
+import { MyTask, MyTaskStatus } from '../../models/my-tasks';
 import { PagingInfo } from 'src/app/core/models/paging-model';
 
 @Component({
@@ -11,6 +11,7 @@ export class MyTaskListComponent implements OnInit {
 
   @Input() myTasks: MyTask[];
   @Input() pagingInfo: PagingInfo;
+  @Input() statuses: MyTaskStatus[];
 
   constructor() { }
 
