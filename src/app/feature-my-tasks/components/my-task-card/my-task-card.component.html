@@ -19,7 +19,7 @@
   </div>
 
   <div class="task-status">
-    <kendo-menu [items]="statusMenu">
+    <kendo-menu [items]="statusMenu" (select)="onItemSelected($event)">
     </kendo-menu>
   </div>
 

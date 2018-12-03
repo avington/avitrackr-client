@@ -57,4 +57,8 @@ export class MyTasksPageComponent implements OnInit {
   addTask() {
     this.rootStore.dispatch(new fromRootStore.GoAction({ path: ['/my-tasks/add'] }));
   }
+
+  onStatusSelected($event) {
+    console.log('event', $event);
+  }
 }

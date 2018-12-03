@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { MyTask, MyTaskStatus } from '../../models/my-tasks';
 import * as moment from 'moment';
 
@@ -12,6 +12,8 @@ export class MyTaskCardComponent implements OnInit {
 
   @Input() myTask: MyTask;
   @Input() statuses: string[];
+
+  @Output() selected: EventEmitter<any> = new EventEmitter<any>();
 
   statusMenu: { text: string, items: { text: string }[] }[];
 
@@ -30,7 +32,6 @@ export class MyTaskCardComponent implements OnInit {
       })
     }];
 
-    console.log(moment(this.myTask.expiresAt));
     if (moment(this.myTask.expiresAt).isBefore(moment().add(-1, 'days'))) {
       this.isRed = true;
     } else if (moment(this.myTask.expiresAt).isBefore(moment())) {
@@ -38,6 +39,20 @@ export class MyTaskCardComponent implements OnInit {
     } else {
       this.isGreen = true;
     }
+
+  }
+
+  onItemSelected($event) {
+
+    const itemText = $event.item.text;
+    if (itemText === this.myTask.status.statusName) {
+      return;
+    }
+
+    this.selected.emit({
+      selected: itemText,
+      task: this.myTask
+    });
 
   }
 

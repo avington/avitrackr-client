@@ -4,7 +4,7 @@
 
 <section class="my-task-section" *ngIf="myTasks">
   <div class="tasks" *ngFor="let task of myTasks">
-    <avi-my-task-card [myTask]="task" [statuses]="statuses"></avi-my-task-card>
+    <avi-my-task-card [myTask]="task" [statuses]="statuses" (selected)="statusSelected.emit($event)"></avi-my-task-card>
   </div>
 
 </section>
