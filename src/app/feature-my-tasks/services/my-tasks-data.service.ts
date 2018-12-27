@@ -20,4 +20,9 @@ export class MyTasksService {
   addMyTask(myTask: MyTask) {
     return this.httpClient.post<MyTask>(`${environment.apiRoot}mytasks`, myTask);
   }
+
+  updateMyTaskStatus<myTask>(myTask: MyTask) {
+    return this.httpClient.patch(`${ environment.apiRoot }mytasks/${myTask.identifier}/UpdateStatus`, myTask);
+  }
+
 }

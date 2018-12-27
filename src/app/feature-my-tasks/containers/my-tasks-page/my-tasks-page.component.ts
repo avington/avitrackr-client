@@ -32,6 +32,7 @@ export class MyTasksPageComponent implements OnInit {
   pagingInfo$: Observable<PagingInfo>;
   isLoading$: Observable<boolean>;
   statuses: string[];
+  statusItems: MyTaskStatus[];
 
   constructor(private store: Store<fromStore.FeatureTaskListState>, private rootStore: Store<fromRootStore.State>) { }
 
@@ -49,6 +50,7 @@ export class MyTasksPageComponent implements OnInit {
     this.store.select(getMyTaskStatusListFromState).pipe(
       filter(s => !!s)
     ).subscribe((items: MyTaskStatus[]) => {
+      this.statusItems = [...items];
       this.statuses = items.map((status: MyTaskStatus) => status.statusName);
     });
 
@@ -58,7 +60,8 @@ export class MyTasksPageComponent implements OnInit {
     this.rootStore.dispatch(new fromRootStore.GoAction({ path: ['/my-tasks/add'] }));
   }
 
-  onStatusSelected($event) {
+  onStatusSelected($event: { selected: string, task: MyTask }) {
     console.log('event', $event);
+    const id = this.statusItems.find((item: MyTaskStatus) => item.statusName === $event.selected);
   }
 }
