@@ -54,6 +54,10 @@ export class MyTaskCardComponent implements OnInit {
       task: this.myTask
     });
 
+    const menu = { ...this.statusMenu[0], text: itemText };
+    this.statusMenu = [menu];
+
+
   }
 
 }

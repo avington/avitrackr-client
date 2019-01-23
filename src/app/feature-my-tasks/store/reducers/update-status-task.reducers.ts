@@ -47,3 +47,8 @@ export function updateTaskStatusReducer(state = initialState, action: fromAction
         }
     }
 }
+
+const getEntityStatusUpdated = (state: UpdateTaskStatusState) => state.entity;
+const getEntityStatusUpdatedLoaded = (state: UpdateTaskStatusState) => state.loaded;
+const getEntityStatusUpdatedLoading = (state: UpdateTaskStatusState) => state.loading;
+const getEntityStatusUpdatedError = (state: UpdateTaskStatusState) => state.error;

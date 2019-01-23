@@ -9,7 +9,7 @@ import { MyTaskQuery } from '../models/my-task-query';
 
 @Injectable()
 export class MyTasksService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getMyTasks(query: MyTaskQuery) {
     return this.httpClient.get<SummaryResonse<MyTask[]>>(
@@ -22,7 +22,7 @@ export class MyTasksService {
   }
 
   updateMyTaskStatus<myTask>(myTask: MyTask) {
-    return this.httpClient.patch(`${ environment.apiRoot }mytasks/${myTask.identifier}/UpdateStatus`, myTask);
+    return this.httpClient.patch(`${environment.apiRoot}mytasks/UpdateStatus/${myTask.identifier}`, myTask);
   }
 
 }

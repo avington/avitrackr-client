@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable, of } from 'rxjs';
 import { Action } from '@ngrx/store';
-import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import * as fromAction from '../actions';
-import { exhaustMap, map, catchError } from 'rxjs/operators';
-import { MyTasksService } from '../../services/my-tasks-data.service';
+import * as fromCoreAction from '../../../core/store/actions';
+import { catchError, exhaustMap, map, tap } from 'rxjs/operators';
 import { MyTask } from '../../models/my-tasks';
+import { MyTasksService } from '../../services/my-tasks-data.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable()
-export class NameEffects {
-    @Effect() name$: Observable<Action> = this.actions$.pipe(
+export class UpdateTaskStatusEffects {
+    @Effect() updateStatus$: Observable<Action> = this.actions$.pipe(
         ofType(fromAction.UpdateTaskStatusActionTypes.UpdateTaskStatus),
         map((action: fromAction.UpdateTaskStatus) => action.payload),
         exhaustMap((payload: MyTask) => {
@@ -22,7 +25,16 @@ export class NameEffects {
         })
     );
 
+    @Effect() updateStatusSuccess$: Observable<Action> = this.actions$.pipe(
+        ofType(fromAction.UpdateTaskStatusActionTypes.UpdateTaskStatusSuccess),
+        map((action: fromAction.UpdateTaskStatusSuccess) => action.payload),
+        tap(() => this.toastr.success('Task Status', 'Task Status Updated')),
+        exhaustMap(() => of(new fromCoreAction.Show()))
+    );
+
     constructor(
-        private actions$: Actions, private data: MyTasksService
+        private actions$: Actions,
+        private data: MyTasksService,
+        private toastr: ToastrService
     ) { }
 }

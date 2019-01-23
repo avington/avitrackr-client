@@ -22,6 +22,7 @@ import { SharedLayoutsModule } from './shared-layouts/shared-layouts.module';
 import * as fromCoreStore from './core/store';
 import { SHARED_COMPONENT_PRODIVERS } from './shared-components/services';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { CORE_EFFECTS } from './core/store/effects';
 
 
 const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze] : [];
@@ -38,6 +39,7 @@ const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]
     StoreModule.forRoot(fromRootStore.reducers, { metaReducers }),
     StoreModule.forFeature('core', fromCoreStore.coreReducers),
     EffectsModule.forRoot([...fromRootStore.rootEffects]),
+    EffectsModule.forFeature([...CORE_EFFECTS]),
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : [],
 
@@ -52,4 +54,4 @@ const metaReducers: MetaReducer<any>[] = !environment.production ? [storeFreeze]
   providers: [...CORE_PROVIDERS, ...SHARED_COMPONENT_PRODIVERS],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
