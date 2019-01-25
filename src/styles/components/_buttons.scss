@@ -1,10 +1,4 @@
-@import "../../../../styles/helpers/colors";
-
-.paging-bar {
-  margin: 1.0rem 1.0rem 1.0rem 1.0rem;
-}
-
-.btn-paging {
+.button {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
@@ -17,21 +11,26 @@
   cursor: pointer;
   user-select: none;
   background-image: none;
-  border: 1px solid $green-800;
+  border: 1px solid $grey-700;
   border-radius: 10px;
-  color: $green-800;
+  color: $grey-800;
   background-color: transparent;
 }
 
-.btn-paging[disabled] {
-  color: $grey-300;
+.button[disabled] {
+  color: $grey-50;
   border: 1px solid $grey-300;
   cursor: default;
 }
 
-.paging-buttons {
-  span {
-    color: $green-800;
-    padding: 0 0.50rem;
-  }
+.button-success {
+  border: 1px solid $green-700;
+  color: $grey-50;
+  background-color: $green-700;
+}
+
+.button-success:hover {
+  color: $green-700;
+  background-color: $grey-50;
+  transition: 300ms ease;
 }
