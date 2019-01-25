@@ -15,7 +15,7 @@
 
   <div class="my-task-list" *ngIf="(myTasks$ | async)?.length">
     <avi-my-task-list [myTasks]="myTasks$ | async" [pagingInfo]="pagingInfo$ | async" [statuses]="statuses"
-      (statusSelected)="onStatusSelected($event)"></avi-my-task-list>
+      (statusSelected)="onStatusSelected($event)" (editSelected)="onEditSelected($event)"></avi-my-task-list>
     <div class="k-block button-row">
       <button class="button button-success" type="submit" (click)="addTask()">
         Add a Task

@@ -23,7 +23,8 @@ export function myTaskReducer(state = initialState, action: fromActions.MyTaskAc
       };
     }
 
-    case fromActions.MyTaskActionTypes.InsertTaskSuccess: {
+    case fromActions.MyTaskActionTypes.InsertTaskSuccess:
+    case fromActions.MyTaskActionTypes.SetCurrentTask: {
       return {
         ...state,
         entity: action.payload,
@@ -39,6 +40,7 @@ export function myTaskReducer(state = initialState, action: fromActions.MyTaskAc
         loaded: false,
         error: action.payload
       };
+
     }
 
     default: {

@@ -14,6 +14,7 @@ export class MyTaskCardComponent implements OnInit {
   @Input() statuses: string[];
 
   @Output() selected: EventEmitter<any> = new EventEmitter<any>();
+  @Output() edit: EventEmitter<MyTask> = new EventEmitter<MyTask>();
 
   statusMenu: { text: string, items: { text: string }[] }[];
 
@@ -58,6 +59,10 @@ export class MyTaskCardComponent implements OnInit {
     this.statusMenu = [menu];
 
 
+  }
+
+  onEdit($event) {
+    this.edit.emit($event);
   }
 
 }

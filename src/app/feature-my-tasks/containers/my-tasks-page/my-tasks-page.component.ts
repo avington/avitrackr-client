@@ -1,9 +1,8 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Store} from '@ngrx/store';
-import * as fromStore from '../../store';
-import {Observable} from 'rxjs';
-import {MyTask, MyTaskStatus} from '../../models/my-tasks';
-import {PagingInfo} from '../../../core/models/paging-model';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { MyTask, MyTaskStatus } from '../../models/my-tasks';
+import { PagingInfo } from '../../../core/models/paging-model';
 
 import {
   getMyTasksListFromState,
@@ -12,14 +11,16 @@ import {
 } from '../../store/selectors/my-tasks-selectors';
 
 
-import {MyTaskQuery} from '../../models/my-task-query';
+import { MyTaskQuery } from '../../models/my-task-query';
 
 import * as fromRootStore from '../../../store';
+import * as fromStore from '../../store';
+
 
 import {
   getMyTaskStatusListLoadedFromState, getMyTaskStatusListFromState
 } from '../../store/selectors/my-task-statuses-selectors';
-import {filter} from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'avi-my-tasks-page',
@@ -39,7 +40,7 @@ export class MyTasksPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    const queryInfo: MyTaskQuery = {skip: 0, openOnly: true, take: 10};
+    const queryInfo: MyTaskQuery = { skip: 0, openOnly: true, take: 10 };
     this.store.dispatch(new fromStore.Load(queryInfo));
     this.myTasks$ = this.store.select(getMyTasksListFromState);
     this.pagingInfo$ = this.store.select(getMyTasksPagingInfoFromState);
@@ -59,14 +60,19 @@ export class MyTasksPageComponent implements OnInit {
   }
 
   addTask() {
-    this.rootStore.dispatch(new fromRootStore.GoAction({path: ['/my-tasks/add']}));
+    this.rootStore.dispatch(new fromRootStore.GoAction({ path: ['/my-tasks/add'] }));
   }
 
   onStatusSelected($event: { selected: string, task: MyTask }) {
 
     const status = this.statusItems.find((item: MyTaskStatus) => item.statusName === $event.selected);
-    const task = {...$event.task};
-    task.status = {id: status.id};
+    const task = { ...$event.task };
+    task.status = { id: status.id };
     this.store.dispatch(new fromStore.UpdateTaskStatus(task));
+  }
+
+  onEditSelected($event: MyTask) {
+    this.store.dispatch(new fromStore.SetCurrentTask($event));
+    this.rootStore.dispatch(new fromRootStore.GoAction({ path: [`/my-tasks/edit/${$event.identifier}`] }));
   }
 }

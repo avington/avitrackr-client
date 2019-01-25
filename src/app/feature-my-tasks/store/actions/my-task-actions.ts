@@ -8,7 +8,8 @@ import { MyTask } from '../../models/my-tasks';
 export enum MyTaskActionTypes {
   InsertTask = '[MyTask] InsertTask',
   InsertTaskSuccess = '[MyTask] InsertTaskSuccess',
-  InsertTaskFailed = '[MyTask] InsertTaskFailed'
+  InsertTaskFailed = '[MyTask] InsertTaskFailed',
+  SetCurrentTask = '[MyTask] SetCurrentTask'
 }
 
 /**
@@ -19,23 +20,29 @@ export enum MyTaskActionTypes {
 export class InsertTask implements Action {
   readonly type = MyTaskActionTypes.InsertTask;
 
-  constructor(public payload: MyTask) {}
+  constructor(public payload: MyTask) { }
 }
 
 export class InsertTaskSuccess implements Action {
   readonly type = MyTaskActionTypes.InsertTaskSuccess;
 
-  constructor(public payload: MyTask) {}
+  constructor(public payload: MyTask) { }
 }
 
 export class InsertTaskFailed implements Action {
   readonly type = MyTaskActionTypes.InsertTaskFailed;
 
-  constructor(public payload: any) {}
+  constructor(public payload: any) { }
+}
+
+export class SetCurrentTask implements Action {
+  readonly type = MyTaskActionTypes.SetCurrentTask;
+
+  constructor(public payload: MyTask) { }
 }
 
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type MyTaskActions = InsertTask | InsertTaskSuccess | InsertTaskFailed;
+export type MyTaskActions = InsertTask | InsertTaskSuccess | InsertTaskFailed | SetCurrentTask;

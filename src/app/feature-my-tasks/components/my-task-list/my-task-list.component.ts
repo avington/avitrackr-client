@@ -14,6 +14,7 @@ export class MyTaskListComponent implements OnInit {
   @Input() statuses: MyTaskStatus[];
 
   @Output() statusSelected: EventEmitter<any> = new EventEmitter<any>();
+  @Output() editSelected: EventEmitter<MyTask> = new EventEmitter<MyTask>();
 
   constructor() { }
 
